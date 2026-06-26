@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRI Result | MRIScan AI</title>
+
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/result.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brain-icon">🧠</div>
+            <div>
+                <h2>MRIScan AI</h2>
+                <p data-en="Brain MRI Analysis"
+                   data-ta="மூளை MRI பகுப்பாய்வு">
+                    Brain MRI Analysis
+                </p>
+            </div>
+        </div>
+
+        <a href="{{ url_for('scan') }}" class="new-scan-btn">
+            <i class="fa-solid fa-plus"></i>
+            <span data-en="New Scan" data-ta="புதிய ஸ்கேன்">New Scan</span>
+        </a>
+
+        <nav class="menu">
+            <a href="{{ url_for('index') }}">
+                <i class="fa-solid fa-house"></i>
+                <span data-en="Dashboard" data-ta="முகப்பு">Dashboard</span>
+            </a>
+
+            <a href="{{ url_for('scan') }}" class="active">
+                <i class="fa-solid fa-brain"></i>
+                <span data-en="MRI Scan" data-ta="MRI ஸ்கேன்">MRI Scan</span>
+            </a>
+<a href="{{ url_for('history') }}">
+    <i class="fa-solid fa-clock-rotate-left"></i>
+    <span data-en="Scan History" data-ta="ஸ்கேன் வரலாறு">Scan History</span>
+</a>
+            <a href="{{ url_for('performance') }}">
+                <i class="fa-solid fa-chart-line"></i>
+                <span data-en="Performance" data-ta="செயல்திறன்">Performance</span>
+            </a>
+
+            <a href="{{ url_for('about') }}">
+                <i class="fa-solid fa-circle-info"></i>
+                <span data-en="About Project" data-ta="திட்டம் பற்றி">About Project</span>
+            </a>
+        </nav>
+
+        <div class="help-card">
+            <h3 data-en="Need Help?" data-ta="உதவி வேண்டுமா?">Need Help?</h3>
+            <p data-en="This system supports AI-based MRI classification."
+               data-ta="இந்த அமைப்பு AI அடிப்படையிலான MRI வகைப்பாட்டை ஆதரிக்கிறது.">
+                This system supports AI-based MRI classification.
+            </p>
+            <button type="button" onclick="alert('Contact project administrator')"
+                    data-en="Contact Support" data-ta="உதவியை தொடர்பு கொள்ளவும்">
+                Contact Support
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div class="page-title">
+                <h1 data-en="MRI Scan Analysis Result"
+                    data-ta="MRI ஸ்கேன் பகுப்பாய்வு முடிவு">
+                    MRI Scan Analysis Result
+                </h1>
+
+                <p data-en="ResNet-18 + CBAM model prediction with Grad-CAM visualization"
+                   data-ta="Grad-CAM காட்சிப்படுத்தலுடன் ResNet-18 + CBAM மாடல் கணிப்பு">
+                    ResNet-18 + CBAM model prediction with Grad-CAM visualization
+                </p>
+            </div>
+
+            <div class="top-actions">
+                <button id="languageToggle" class="lang-btn" type="button">
+                    தமிழ்
+                </button>
+
+                <div class="avatar">AI</div>
+            </div>
+        </header>
+
+        <section class="dashboard-grid">
+
+            <div class="panel">
+                <h3 data-en="1. Original MRI Scan"
+                    data-ta="1. அசல் MRI ஸ்கேன்">
+                    1. Original MRI Scan
+                </h3>
+
+                <div class="mri-image-box">
+                    <img src="{{ image_url }}" alt="Original MRI Scan">
+                </div>
+
+                <div class="file-box">
+                    <div>
+                        <i class="fa-solid fa-file-image"></i>
+                        <div>
+                            <strong>{{ filename }}</strong>
+                            <small data-en="Uploaded MRI Image"
+                                   data-ta="பதிவேற்றப்பட்ட MRI படம்">
+                                Uploaded MRI Image
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel prediction-card">
+                <p data-en="2. AI ANALYSIS RESULT"
+                   data-ta="2. AI பகுப்பாய்வு முடிவு">
+                    2. AI ANALYSIS RESULT
+                </p>
+
+                <h2 class="prediction">{{ prediction }}</h2>
+
+                {% if prediction != "No Tumor" %}
+                    <div class="tumor-badge">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span data-en="Tumor Pattern Detected"
+                              data-ta="கட்டி வடிவம் கண்டறியப்பட்டது">
+                            Tumor Pattern Detected
+                        </span>
+                    </div>
+                {% else %}
+                    <div class="tumor-badge safe">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span data-en="No Tumor Pattern Detected"
+                              data-ta="கட்டி வடிவம் கண்டறியப்படவில்லை">
+                            No Tumor Pattern Detected
+                        </span>
+                    </div>
+                {% endif %}
+
+                <hr>
+
+                <p data-en="Confidence Score"
+                   data-ta="நம்பகத்தன்மை மதிப்பெண்">
+                    Confidence Score
+                </p>
+
+                <h2 class="confidence">{{ confidence }}%</h2>
+
+                <div class="confidence-bar">
+                    <div style="width: {{ confidence }}%;"></div>
+                </div>
+            </div>
+
+            <div class="analysis-column">
+
+                <div class="panel chart-panel">
+                    <h3 data-en="3. Class Probability Scores"
+                        data-ta="3. வகை சதவீத மதிப்பெண்கள்">
+                        3. Class Probability Scores
+                    </h3>
+
+                    <div class="bar-chart">
+                        {% for class_name, value in probabilities.items() %}
+                        <div class="bar-item">
+                            <span class="bar-value">{{ value }}%</span>
+
+                            <div class="bar-wrap">
+                                <div class="bar
+                                    {% if class_name == 'Glioma' %}glioma
+                                    {% elif class_name == 'Meningioma' %}meningioma
+                                    {% elif class_name == 'Pituitary' %}pituitary
+                                    {% else %}no-tumor{% endif %}"
+                                    style="height: {{ value }}%;">
+                                </div>
+                            </div>
+
+                            <span class="bar-label">{{ class_name }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3 data-en="4. Grad-CAM Tumor Attention Map"
+                        data-ta="4. Grad-CAM கட்டி கவன வரைபடம்">
+                        4. Grad-CAM Tumor Attention Map
+                    </h3>
+
+                    <div class="heatmap-content">
+                        <img src="{{ heatmap_url }}" alt="Grad-CAM Heatmap">
+
+                        <div class="legend">
+                            <p data-en="AI Attention Level"
+                               data-ta="AI கவன நிலை">
+                                AI Attention Level
+                            </p>
+
+                            <div class="color-scale"></div>
+
+                            <div class="legend-labels">
+                                <span data-en="High" data-ta="அதிகம்">High</span>
+                                <span data-en="Low" data-ta="குறைவு">Low</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel history-panel">
+                <div class="history-title">
+                    <h3 data-en="Result Summary"
+                        data-ta="முடிவு சுருக்கம்">
+                        Result Summary
+                    </h3>
+                </div>
+
+                <div class="summary-list">
+                    <div class="summary-item">
+                        <div class="summary-item">
+    <span>Recommendation</span>
+    <strong>{{ recommendation }}</strong>
+</div>
+
+{% if warning %}
+<div class="medical-note">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    {{ warning }}
+</div>
+{% endif %}
+                        <span data-en="Predicted Class" data-ta="கணிக்கப்பட்ட வகை">
+                            Predicted Class
+                        </span>
+                        <strong>{{ prediction }}</strong>
+                    </div>
+
+                    <div class="summary-item">
+                        <span data-en="Confidence" data-ta="நம்பகத்தன்மை">
+                            Confidence
+                        </span>
+                        <strong>{{ confidence }}%</strong>
+                    </div>
+
+                    <div class="summary-item">
+                        <span data-en="Model" data-ta="மாடல்">
+                            Model
+                        </span>
+                        <strong>ResNet-18 + CBAM</strong>
+                    </div>
+
+                    <div class="summary-item">
+                        <span data-en="Visualization" data-ta="காட்சிப்படுத்தல்">
+                            Visualization
+                        </span>
+                        <strong>Grad-CAM</strong>
+                    </div>
+                </div>
+
+                <div class="medical-note">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <p data-en="This result is for academic demonstration only. It is not a medical diagnosis."
+                       data-ta="இந்த முடிவு கல்வி விளக்கத்திற்காக மட்டுமே. இது மருத்துவ நோயறிதல் அல்ல.">
+                        This result is for academic demonstration only. It is not a medical diagnosis.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="bottom-actions">
+            <a href="{{ image_url }}" download class="action-btn">
+                <i class="fa-solid fa-download"></i>
+                <span data-en="Original MRI" data-ta="அசல் MRI">Original MRI</span>
+            </a>
+
+            <a href="{{ heatmap_url }}" download class="action-btn">
+                <i class="fa-solid fa-fire"></i>
+                <span data-en="Grad-CAM Image" data-ta="Grad-CAM படம்">Grad-CAM Image</span>
+            </a>
+
+            <button class="action-btn" type="button" onclick="window.print()">
+                <i class="fa-solid fa-print"></i>
+                <span data-en="Print Result" data-ta="முடிவை அச்சிடு">Print Result</span>
+            </button>
+
+            <a href="{{ url_for('scan') }}" class="action-btn purple-btn">
+                <i class="fa-solid fa-plus"></i>
+                <span data-en="Analyze New Scan" data-ta="புதிய ஸ்கேனை பகுப்பாய்வு செய்">
+                    Analyze New Scan
+                </span>
+            </a>
+        </section>
+
+        <section class="disclaimer">
+            <strong data-en="Important:" data-ta="முக்கியம்:">Important:</strong>
+            <span data-en="Grad-CAM shows the image regions that influenced the model prediction. It does not provide an exact tumor boundary."
+                  data-ta="Grad-CAM மாடல் கணிப்பை பாதித்த படப்பகுதிகளை காட்டுகிறது. இது கட்டியின் சரியான எல்லையை காட்டாது.">
+                Grad-CAM shows the image regions that influenced the model prediction. It does not provide an exact tumor boundary.
+            </span>
+        </section>
+
+    </main>
+</div>
+
+<script>
+    const languageToggle = document.getElementById("languageToggle");
+
+    function setLanguage(language) {
+        document.querySelectorAll("[data-en]").forEach((element) => {
+            element.textContent = element.getAttribute("data-" + language);
+        });
+
+        languageToggle.textContent = language === "en" ? "தமிழ்" : "English";
+        localStorage.setItem("MRIscan_language", language);
+    }
+
+    languageToggle.addEventListener("click", () => {
+        const currentLanguage =
+            localStorage.getItem("mriscan_language") || "en";
+
+        setLanguage(currentLanguage === "en" ? "ta" : "en");
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+        setLanguage(localStorage.getItem("mriscan_language") || "en");
+    });
+</script>
+
+</body>
+</html>

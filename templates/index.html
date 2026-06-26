@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRIScan AI | Brain Tumor Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="{{ url_for('index') }}" class="logo">MRI<span>Scan</span> AI</a>
+
+    <div class="nav-links">
+        <a href="{{ url_for('index') }}" class="active" data-en="Home" data-ta="முகப்பு">Home</a>
+        <a href="{{ url_for('scan') }}" data-en="Scan MRI" data-ta="MRI ஸ்கேன்">Scan MRI</a>
+        <a href="{{ url_for('performance') }}" data-en="Performance" data-ta="செயல்திறன்">Performance</a>
+        <a href="{{ url_for('about') }}" data-en="About" data-ta="திட்டம் பற்றி">About</a>
+    </div>
+
+    <button id="languageToggle" class="language-toggle" type="button">தமிழ்</button>
+
+    <a href="{{ url_for('scan') }}" class="nav-button"
+       data-en="Start Scan" data-ta="ஸ்கேன் தொடங்கு">Start Scan</a>
+</nav>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <p class="tag"
+               data-en="AI-ASSISTED MRI ANALYSIS"
+               data-ta="AI உதவியுடன் MRI பகுப்பாய்வு">
+               AI-ASSISTED MRI ANALYSIS
+            </p>
+
+            <h1 data-en="Brain Tumor Classification Using Deep Learning"
+                data-ta="ஆழக் கற்றலை பயன்படுத்தி மூளை கட்டி வகைப்பாடு">
+                Brain Tumor Classification Using Deep Learning
+            </h1>
+
+            <p class="hero-text"
+               data-en="Upload an MRI scan and receive an AI-assisted classification using ResNet-18 with CBAM attention mechanism."
+               data-ta="MRI ஸ்கேன் படத்தை பதிவேற்றி, ResNet-18 மற்றும் CBAM Attention மாடல் மூலம் AI உதவியுடன் வகைப்பாடு பெறுங்கள்.">
+               Upload an MRI scan and receive an AI-assisted classification using ResNet-18 with CBAM attention mechanism.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="{{ url_for('scan') }}" class="primary-button"
+                   data-en="Upload MRI Scan →"
+                   data-ta="MRI ஸ்கேன் பதிவேற்று →">
+                   Upload MRI Scan →
+                </a>
+
+                <a href="{{ url_for('about') }}" class="secondary-button"
+                   data-en="Learn More"
+                   data-ta="மேலும் அறிய">
+                   Learn More
+                </a>
+            </div>
+
+            <div class="stats">
+                <div>
+                    <strong>4</strong>
+                    <span data-en="Classes Supported" data-ta="ஆதரிக்கப்படும் வகைகள்">Classes Supported</span>
+                </div>
+                <div>
+                    <strong>ResNet-18</strong>
+                    <span data-en="Deep Learning Model" data-ta="ஆழக் கற்றல் மாடல்">Deep Learning Model</span>
+                </div>
+                <div>
+                    <strong>CBAM</strong>
+                    <span data-en="Attention Mechanism" data-ta="கவனிப்பு அமைப்பு">Attention Mechanism</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="brain-card">
+            <div class="scan-circle">🧠</div>
+
+            <h3 data-en="AI MRI Analysis" data-ta="AI MRI பகுப்பாய்வு">AI MRI Analysis</h3>
+
+            <p data-en="Fast classification with confidence score and probability analysis."
+               data-ta="நம்பகத்தன்மை மதிப்பெண் மற்றும் சதவீத பகுப்பாய்வுடன் விரைவான வகைப்பாடு.">
+               Fast classification with confidence score and probability analysis.
+            </p>
+
+            <div class="scan-status">
+                <span class="status-dot"></span>
+                <span data-en="Model Ready" data-ta="மாடல் தயாராக உள்ளது">Model Ready</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-section">
+        <div class="section-heading">
+            <p class="tag" data-en="WORKFLOW" data-ta="செயல்முறை">WORKFLOW</p>
+
+            <h2 data-en="How It Works" data-ta="இது எப்படி செயல்படுகிறது">
+                How It Works
+            </h2>
+
+            <p data-en="Simple MRI image classification in three steps."
+               data-ta="மூன்று எளிய படிகளில் MRI பட வகைப்பாடு.">
+               Simple MRI image classification in three steps.
+            </p>
+        </div>
+
+        <div class="steps">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <h3 data-en="Upload MRI" data-ta="MRI பதிவேற்று">Upload MRI</h3>
+                <p data-en="Select a brain MRI image in PNG, JPG, or JPEG format."
+                   data-ta="PNG, JPG அல்லது JPEG வடிவத்தில் மூளை MRI படத்தை தேர்வு செய்யவும்.">
+                   Select a brain MRI image in PNG, JPG, or JPEG format.
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <h3 data-en="AI Processing" data-ta="AI செயலாக்கம்">AI Processing</h3>
+                <p data-en="The ResNet-18 + CBAM model analyzes visual features from the scan."
+                   data-ta="ResNet-18 + CBAM மாடல் ஸ்கேனில் உள்ள முக்கிய அம்சங்களை பகுப்பாய்வு செய்கிறது.">
+                   The ResNet-18 + CBAM model analyzes visual features from the scan.
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <h3 data-en="View Results" data-ta="முடிவுகளை பார்க்கவும்">View Results</h3>
+                <p data-en="Get predicted tumor category, confidence score, and class probabilities."
+                   data-ta="கணிக்கப்பட்ட கட்டி வகை, நம்பகத்தன்மை மதிப்பெண் மற்றும் வகை சதவீதங்களை பெறுங்கள்.">
+                   Get predicted tumor category, confidence score, and class probabilities.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="disclaimer">
+        <strong data-en="Important:" data-ta="முக்கியம்:">Important:</strong>
+        <span data-en="This application is developed for academic and research purposes only. It is not a medical diagnostic tool and should not replace professional clinical advice."
+              data-ta="இந்த பயன்பாடு கல்வி மற்றும் ஆராய்ச்சி நோக்கங்களுக்காக மட்டுமே உருவாக்கப்பட்டது. இது மருத்துவ நோயறிதல் கருவி அல்ல.">
+              This application is developed for academic and research purposes only. It is not a medical diagnostic tool and should not replace professional clinical advice.
+        </span>
+    </section>
+</main>
+
+<footer>
+    <p data-en="© 2026 MRIScan AI · MRI Brain Tumor Classification Project"
+       data-ta="© 2026 MRIScan AI · MRI மூளை கட்டி வகைப்பாட்டு திட்டம்">
+       © 2026 MRIScan AI · MRI Brain Tumor Classification Project
+    </p>
+</footer>
+
+<script src="{{ url_for('static', filename='js/language.js') }}"></script>
+</body>
+</html>

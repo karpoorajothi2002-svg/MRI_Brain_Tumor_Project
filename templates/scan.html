@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan MRI | MRIScan AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="{{ url_for('index') }}" class="logo">MRI<span>Scan</span> AI</a>
+
+    <div class="nav-links">
+        <a href="{{ url_for('index') }}" data-en="Home" data-ta="முகப்பு">Home</a>
+        <a href="{{ url_for('scan') }}" class="active" data-en="Scan MRI" data-ta="MRI ஸ்கேன்">Scan MRI</a>
+        <a href="{{ url_for('performance') }}" data-en="Performance" data-ta="செயல்திறன்">Performance</a>
+        <a href="{{ url_for('about') }}" data-en="About" data-ta="திட்டம் பற்றி">About</a>
+    </div>
+
+    <button id="languageToggle" class="language-toggle" type="button">தமிழ்</button>
+
+    <a href="{{ url_for('index') }}" class="nav-button" data-en="Home" data-ta="முகப்பு">Home</a>
+</nav>
+
+<main class="page-container">
+    <div class="page-heading">
+        <p class="tag" data-en="MRI ANALYSIS" data-ta="MRI பகுப்பாய்வு">MRI ANALYSIS</p>
+
+        <h1 data-en="Upload Brain MRI Scan" data-ta="மூளை MRI ஸ்கேனை பதிவேற்றவும்">
+            Upload Brain MRI Scan
+        </h1>
+
+        <p data-en="Supported formats: PNG, JPG, JPEG. Maximum file size: 10 MB."
+           data-ta="ஆதரிக்கப்படும் கோப்பு வடிவங்கள்: PNG, JPG, JPEG. அதிகபட்ச அளவு: 10 MB.">
+           Supported formats: PNG, JPG, JPEG. Maximum file size: 10 MB.
+        </p>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" enctype="multipart/form-data" class="upload-form">
+        <label for="image" class="upload-box">
+            <div class="upload-icon">⬆</div>
+
+            <h3 data-en="Choose an MRI image" data-ta="MRI படத்தை தேர்வு செய்யவும்">
+                Choose an MRI image
+            </h3>
+
+            <p data-en="Click here to browse your computer"
+               data-ta="உங்கள் கணினியில் இருந்து படத்தை தேர்வு செய்ய இங்கே கிளிக் செய்யவும்">
+               Click here to browse your computer
+            </p>
+
+            <span id="file-name"
+                  data-en="No image selected"
+                  data-ta="படம் தேர்வு செய்யப்படவில்லை">
+                  No image selected
+            </span>
+        </label>
+
+        <input id="image" type="file" name="image" accept=".png,.jpg,.jpeg" required hidden>
+
+        <div id="preview-container" class="preview-container">
+            <img id="preview-image" src="" alt="MRI preview">
+        </div>
+
+        <button type="submit" class="primary-button analyze-button"
+                data-en="Analyze MRI Scan →"
+                data-ta="MRI ஸ்கேனை பகுப்பாய்வு செய்யவும் →">
+            Analyze MRI Scan →
+        </button>
+    </form>
+
+    <section class="disclaimer">
+        <strong data-en="Important:" data-ta="முக்கியம்:">Important:</strong>
+        <span data-en="This system provides AI-assisted classification for educational and research use only."
+              data-ta="இந்த அமைப்பு கல்வி மற்றும் ஆராய்ச்சி பயன்பாட்டிற்கான AI உதவியுடன் வகைப்பாட்டை மட்டுமே வழங்குகிறது.">
+              This system provides AI-assisted classification for educational and research use only.
+        </span>
+    </section>
+</main>
+
+<footer>
+    <p data-en="© 2026 MRIScan AI · MRI Brain Tumor Classification Project"
+       data-ta="© 2026 MRIScan AI · MRI மூளை கட்டி வகைப்பாட்டு திட்டம்">
+       © 2026 MRIScan AI · MRI Brain Tumor Classification Project
+    </p>
+</footer>
+
+<script>
+    const fileInput = document.getElementById("image");
+    const fileName = document.getElementById("file-name");
+    const previewContainer = document.getElementById("preview-container");
+    const previewImage = document.getElementById("preview-image");
+
+    fileInput.addEventListener("change", function () {
+        const file = this.files[0];
+
+        if (!file) return;
+
+        fileName.textContent = file.name;
+
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+            previewImage.src = event.target.result;
+            previewContainer.style.display = "block";
+        };
+
+        reader.readAsDataURL(file);
+    });
+</script>
+
+<script src="{{ url_for('static', filename='js/language.js') }}"></script>
+</body>
+</html>
+<!-- Upload Section -->
+<div class="upload-card">
+  <h2>Upload MRI Scan</h2>
+  <input type="file" id="mri-file" accept="image/*">
+  <button onclick="analyzeScan()">Analyze Scan</button>
+</div>
+
+<!-- Results Section (hidden initially) -->
+<div id="results" style="display:none;">
+
+  <!-- Confidence Scores -->
+  <div class="confidence-card">
+    <h3>Prediction Result</h3>
+    <p id="pred-label" class="pred-text"></p>
+    <div id="conf-bars"></div>
+  </div>
+
+  <!-- Image Comparison: Original | Grad-CAM -->
+  <div class="image-compare-grid">
+    <div>
+      <p class="img-label">Original MRI</p>
+      <img id="original-img" class="scan-img">
+    </div>
+    <div>
+      <p class="img-label">Grad-CAM Heatmap</p>
+      <img id="heatmap-img" class="scan-img">
+      <p class="heatmap-note">
+        Red = High activation (tumor region) &nbsp;|&nbsp; Blue = Low activation
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const CLASS_COLORS = {
+  glioma:      '#E24B4A',
+  meningioma:  '#378ADD',
+  notumor:     '#1D9E75',
+  pituitary:   '#BA7517'
+};
+
+async function analyzeScan() {
+  const file = document.getElementById('mri-file').files[0];
+  if (!file) { alert('MRI image select பண்ணுங்க'); return; }
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  // Loading state
+  document.getElementById('results').style.display = 'none';
+  document.querySelector('button').textContent = 'Analyzing...';
+
+  try {
+    const res = await fetch('/predict', { method: 'POST', body: formData });
+    const data = await res.json();
+
+    if (data.error) { alert(data.error); return; }
+
+    // Show prediction label
+    document.getElementById('pred-label').textContent =
+      `Predicted: ${data.prediction.toUpperCase()}`;
+
+    // Confidence bars
+    const barsHtml = Object.entries(data.confidence)
+      .sort((a, b) => b[1] - a[1])
+      .map(([cls, pct]) => `
+        <div class="conf-row">
+          <span class="conf-label">${cls}</span>
+          <div class="conf-bar-bg">
+            <div class="conf-bar-fill"
+                 style="width:${pct}%; background:${CLASS_COLORS[cls] || '#888'}">
+            </div>
+          </div>
+          <span class="conf-pct">${pct}%</span>
+        </div>
+      `).join('');
+    document.getElementById('conf-bars').innerHTML = barsHtml;
+
+    // Images
+    document.getElementById('original-img').src = data.original_img;
+    document.getElementById('heatmap-img').src  = data.heatmap_img;
+
+    document.getElementById('results').style.display = 'block';
+  } catch (err) {
+    alert('Error: ' + err.message);
+  } finally {
+    document.querySelector('button').textContent = 'Analyze Scan';
+  }
+}
+</script>
+
+<style>
+.image-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+.scan-img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+.img-label {
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 6px;
+}
+.heatmap-note {
+  font-size: 11px;
+  color: #888;
+  margin-top: 6px;
+}
+.conf-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.conf-label { width: 100px; font-size: 13px; }
+.conf-bar-bg {
+  flex: 1;
+  height: 10px;
+  background: #2a2a2a;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.conf-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.6s ease;
+}
+.conf-pct { width: 50px; font-size: 13px; text-align: right; }
+</style>

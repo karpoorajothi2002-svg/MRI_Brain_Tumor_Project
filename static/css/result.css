@@ -1,0 +1,554 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: #020817;
+    color: #f8fafc;
+}
+
+.app-layout {
+    min-height: 100vh;
+    display: flex;
+    background:
+        radial-gradient(circle at top right, rgba(91, 33, 182, 0.18), transparent 34%),
+        #020817;
+}
+
+.sidebar {
+    width: 255px;
+    min-height: 100vh;
+    padding: 22px 14px;
+    border-right: 1px solid #1e293b;
+    background: linear-gradient(180deg, #071226, #09162d);
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 10px 24px;
+    border-bottom: 1px solid #1e293b;
+    margin-bottom: 18px;
+}
+
+.brain-icon {
+    font-size: 34px;
+}
+
+.brand h2 {
+    font-size: 19px;
+}
+
+.brand p {
+    font-size: 11px;
+    color: #cbd5e1;
+    margin-top: 4px;
+}
+
+.new-scan-btn {
+    background: linear-gradient(90deg, #6d28d9, #7c3aed);
+    color: white;
+    padding: 13px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 6px 20px;
+}
+
+.new-scan-btn i {
+    margin-right: 8px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.menu a {
+    color: #e2e8f0;
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.menu a i {
+    width: 27px;
+    color: #cbd5e1;
+}
+
+.menu a:hover,
+.menu a.active {
+    background: #17213b;
+    color: #c084fc;
+    border-left: 3px solid #8b5cf6;
+}
+
+.help-card {
+    margin-top: auto;
+    background: linear-gradient(135deg, #172554, #3b157c);
+    border: 1px solid #6d28d9;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.help-card h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.help-card p {
+    font-size: 11px;
+    color: #dbeafe;
+    line-height: 1.5;
+    margin-bottom: 13px;
+}
+
+.help-card button {
+    width: 100%;
+    border: 0;
+    padding: 10px;
+    color: white;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #6d28d9, #7c3aed);
+}
+
+.main-content {
+    width: calc(100% - 255px);
+    padding: 22px 24px;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.page-title h1 {
+    font-size: 23px;
+}
+
+.page-title p {
+    font-size: 13px;
+    color: #cbd5e1;
+    margin-top: 5px;
+}
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lang-btn {
+    background: #0b1326;
+    border: 1px solid #273449;
+    color: white;
+    padding: 9px 13px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d946ef, #7c3aed);
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr 1.75fr 1.2fr;
+    gap: 11px;
+}
+
+.panel {
+    background: linear-gradient(145deg, #071126, #08152c);
+    border: 1px solid #273449;
+    border-radius: 10px;
+    padding: 13px;
+}
+
+.panel h3 {
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.mri-image-box {
+    height: 255px;
+    border-radius: 7px;
+    overflow: hidden;
+    background: #000;
+}
+
+.mri-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.file-box {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    padding: 10px;
+    border-radius: 7px;
+    background: #09142a;
+    border: 1px solid #273449;
+}
+
+.file-box > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-box i {
+    color: #c084fc;
+}
+
+.file-box strong,
+.file-box small {
+    display: block;
+}
+
+.file-box strong {
+    font-size: 11px;
+    max-width: 145px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-box small {
+    font-size: 10px;
+    color: #94a3b8;
+    margin-top: 4px;
+}
+
+.prediction-card {
+    border-color: #6d28d9;
+    text-align: center;
+    background: linear-gradient(145deg, rgba(109, 40, 217, 0.16), rgba(15, 23, 42, 0.88));
+}
+
+.prediction-card p {
+    font-size: 12px;
+    color: #e2e8f0;
+}
+
+.prediction {
+    color: #c084fc;
+    font-size: 27px;
+    margin: 8px 0 15px;
+}
+
+.tumor-badge {
+    display: inline-block;
+    background: rgba(109, 40, 217, 0.2);
+    color: #d8b4fe;
+    border: 1px solid #7c3aed;
+    padding: 7px 9px;
+    font-size: 11px;
+    border-radius: 7px;
+}
+
+.tumor-badge.safe {
+    color: #86efac;
+    border-color: #22c55e;
+    background: rgba(34, 197, 94, 0.13);
+}
+
+.prediction-card hr {
+    border: 0;
+    border-top: 1px solid #334155;
+    margin: 20px 0 14px;
+}
+
+.confidence {
+    font-size: 33px;
+    color: #c084fc;
+    margin: 8px 0 14px;
+}
+
+.confidence-bar {
+    height: 13px;
+    background: #172033;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.confidence-bar div {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #a855f7, #6d28d9, #2563eb, #22c55e);
+}
+
+.analysis-column {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.chart-panel {
+    height: 205px;
+}
+
+.bar-chart {
+    height: 145px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    border-bottom: 1px solid #475569;
+    padding: 0 8px;
+}
+
+.bar-item {
+    height: 100%;
+    width: 23%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.bar-wrap {
+    height: 108px;
+    width: 38px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.bar {
+    width: 100%;
+    min-height: 3px;
+    border-radius: 5px 5px 0 0;
+}
+
+.glioma {
+    background: linear-gradient(#a855f7, #6d28d9);
+}
+
+.meningioma {
+    background: #2563eb;
+}
+
+.pituitary {
+    background: #22c55e;
+}
+
+.no-tumor {
+    background: #f59e0b;
+}
+
+.bar-value {
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+.bar-label {
+    font-size: 9px;
+    text-align: center;
+    margin-top: 7px;
+}
+
+.heatmap-content {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.heatmap-content img {
+    width: 72%;
+    height: 145px;
+    object-fit: contain;
+    background: #000;
+    border-radius: 6px;
+}
+
+.legend {
+    flex: 1;
+    border: 1px solid #334155;
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.legend p {
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+.color-scale {
+    width: 15px;
+    height: 88px;
+    background: linear-gradient(to top, #1e40af, #06b6d4, #22c55e, #facc15, #ef4444);
+}
+
+.legend-labels {
+    font-size: 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 59px;
+    margin-left: 21px;
+    margin-top: -87px;
+}
+
+.summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.summary-item {
+    padding: 10px;
+    border: 1px solid #273449;
+    background: #0b162b;
+    border-radius: 7px;
+}
+
+.summary-item span,
+.summary-item strong {
+    display: block;
+}
+
+.summary-item span {
+    font-size: 10px;
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+.summary-item strong {
+    font-size: 12px;
+    color: #e9d5ff;
+}
+
+.medical-note {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 10px;
+    border-radius: 7px;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.medical-note i {
+    color: #fbbf24;
+    margin-top: 2px;
+}
+
+.medical-note p {
+    font-size: 10px;
+    line-height: 1.5;
+    color: #fde68a;
+}
+
+.bottom-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+    margin-top: 11px;
+}
+
+.action-btn {
+    color: white;
+    border: 1px solid #273449;
+    background: #09142a;
+    padding: 13px;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.action-btn i {
+    margin-right: 7px;
+}
+
+.purple-btn {
+    background: linear-gradient(90deg, #6d28d9, #7c3aed);
+    border: 0;
+}
+
+.disclaimer {
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.55;
+    color: #cbd5e1;
+    margin: 17px 8px 0;
+}
+
+@media (max-width: 1250px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        width: 100%;
+        padding: 14px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .dashboard-grid,
+    .bottom-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .mri-image-box {
+        height: 320px;
+    }
+}
+
+@media print {
+    .sidebar,
+    .top-actions,
+    .bottom-actions {
+        display: none;
+    }
+
+    body,
+    .app-layout,
+    .main-content {
+        background: white;
+        color: black;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    .panel {
+        border: 1px solid #999;
+        background: white;
+    }
+}

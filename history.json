@@ -1,0 +1,332 @@
+[
+    {
+        "id": "2077f96538b044b2986f05a31fbceab6",
+        "date": "26-06-2026 10:34 AM",
+        "filename": "Te-aug-me_4.jpg",
+        "prediction": "Meningioma",
+        "confidence": 99.99,
+        "image_file": "eb06665f4a754750830e56fc19056f9a.jpg",
+        "heatmap_file": "gradcam_41c0146e12054495822417c8361a242f.jpg",
+        "probabilities": {
+            "Glioma": 0.0,
+            "Meningioma": 99.99,
+            "No Tumor": 0.0,
+            "Pituitary": 0.0
+        }
+    },
+    {
+        "id": "5fc25ec5a5ea42eba4f390ac20d67983",
+        "date": "26-06-2026 10:32 AM",
+        "filename": "Te-pi_78.jpg",
+        "prediction": "Pituitary",
+        "confidence": 99.99,
+        "image_file": "0e600acf3933420b8e44c91a3264c144.jpg",
+        "heatmap_file": "gradcam_ebb32cbfc5894eac87ec836f8703f151.jpg",
+        "probabilities": {
+            "Glioma": 0.0,
+            "Meningioma": 0.01,
+            "No Tumor": 0.0,
+            "Pituitary": 99.99
+        }
+    },
+    {
+        "id": "36a6babe59384fceaae9c1e56f88ab1f",
+        "date": "25-06-2026 04:32 PM",
+        "filename": "Te-aug-me_4.jpg",
+        "prediction": "Meningioma",
+        "confidence": 99.99,
+        "image_file": "c04686ccd9194b0b97c02323cd458583.jpg",
+        "heatmap_file": "gradcam_21323902651b474dbbfc44af47abffbd.jpg",
+        "probabilities": {
+            "Glioma": 0.0,
+            "Meningioma": 99.99,
+            "No Tumor": 0.0,
+            "Pituitary": 0.0
+        }
+    },
+    {
+        "id": "9e3c3dd8cf5e4be2976f0e52f7f002ae",
+        "date": "25-06-2026 16:29",
+        "filename": "Te-gl_39.jpg",
+        "image_file": "d39e467a4e714080804c371581199099_Te-gl_39.jpg",
+        "prediction": "No Tumor",
+        "confidence": 51.91,
+        "probabilities": {
+            "Glioma": 0.02,
+            "Meningioma": 47.85,
+            "No Tumor": 51.91,
+            "Pituitary": 0.21
+        },
+        "heatmap_file": ""
+    },
+    {
+        "id": "37872428c61f4933a5f0de3f0f7a5f5e",
+        "date": "25-06-2026 16:29",
+        "filename": "Te-gl_27.jpg",
+        "image_file": "9a359f7c861d4ed7a26cdcaa602bbd66_Te-gl_27.jpg",
+        "prediction": "Meningioma",
+        "confidence": 59.54,
+        "probabilities": {
+            "Glioma": 15.92,
+            "Meningioma": 59.54,
+            "No Tumor": 24.26,
+            "Pituitary": 0.28
+        },
+        "heatmap_file": ""
+    },
+    {
+        "id": "0055de1e550840308c772432fbdf7551",
+        "date": "25-06-2026 03:47 PM",
+        "filename": "Te-gl_18.jpg",
+        "prediction": "Glioma",
+        "confidence": 100.0,
+        "image_file": "7acb47f82c1f48ebb7a26dc8ed8977c6.jpg",
+        "heatmap_file": "gradcam_0c3f935df6d84ecb8f57f387f6fa8b9b.jpg",
+        "probabilities": {
+            "Glioma": 100.0,
+            "Meningioma": 0.0,
+            "No Tumor": 0.0,
+            "Pituitary": 0.0
+        }
+    },
+    {
+        "id": "c7be411450474c93982f3fc46904f4c5",
+        "date": "25-06-2026 03:46 PM",
+        "filename": "Te-gl_4.jpg",
+        "prediction": "Glioma",
+        "confidence": 99.98,
+        "image_file": "4ab85832341d4e28b1e8f7e8d73766b5.jpg",
+        "heatmap_file": "gradcam_a2b1fbd8059b4d0ca19dccd0bd9f571f.jpg",
+        "probabilities": {
+            "Glioma": 99.98,
+            "Meningioma": 0.01,
+            "No Tumor": 0.0,
+            "Pituitary": 0.0
+        }
+    },
+    {
+        "id": "69e3b66e0081435f9c14907fe8894fbd",
+        "date": "25-06-2026 03:46 PM",
+        "filename": "Te-gl_1.jpg",
+        "prediction": "No Tumor",
+        "confidence": 48.58,
+        "image_file": "4c0ea2efa8bf47c295344dfffe813eb0.jpg",
+        "heatmap_file": "gradcam_aeddd8c577014b99be6d342ddbc1e986.jpg",
+        "probabilities": {
+            "Glioma": 40.71,
+            "Meningioma": 6.12,
+            "No Tumor": 48.58,
+            "Pituitary": 4.59
+        }
+    },
+    {
+        "id": "b3de8853a0164ecd9af6312424324141",
+        "date": "25-06-2026 03:45 PM",
+        "filename": "Te-pi_25.jpg",
+        "prediction": "Pituitary",
+        "confidence": 100.0,
+        "image_file": "94fc3205653744099c81ef63277f6282.jpg",
+        "heatmap_file": "gradcam_66273ecb08884beb966cdc59dc928e94.jpg",
+        "probabilities": {
+            "Glioma": 0.0,
+            "Meningioma": 0.0,
+            "No Tumor": 0.0,
+            "Pituitary": 100.0
+        }
+    },
+    {
+        "id": "524d8317b9cd427ea2c6affef7867fff",
+        "date": "25-06-2026 03:45 PM",
+        "filename": "Te-pi_7 - Copy.jpg",
+        "prediction": "Pituitary",
+        "confidence": 100.0,
+        "image_file": "2c939a2691014c2e984f0c29035a22d0.jpg",
+        "heatmap_file": "gradcam_321d714f195a41e8b8b70e2fcf38c17e.jpg",
+        "probabilities": {
+            "Glioma": 0.0,
+            "Meningioma": 0.0,
+            "No Tumor": 0.0,
+            "Pituitary": 100.0
+        }
+    },
+    {
+        "id": "10dfd71cec1a4a8fb291002ec134628f",
+        "date": "25-06-2026 03:45 PM",
+        "filename": "Te-pi_7 - Copy.jpg",
+        "prediction": "Pituitary",
+        "confidence": 100.0,
+        "image_file": "0d6d3095e6e84fd48b31fa913c9f7bab.jpg",
+        "heatmap_file": "gradcam_469afd4f5c4b435dab87b9381767f5d7.jpg",
+        "probabilities": {
+            "Glioma": 0.0,
+            "Meningioma": 0.0,
+            "No Tumor": 0.0,
+            "Pituitary": 100.0
+        }
+    },
+    {
+        "id": "4044e3f7007a4fd5b921de975831738e",
+        "date": "25-06-2026 03:44 PM",
+        "filename": "Te-pi_2.jpg",
+        "prediction": "Pituitary",
+        "confidence": 99.98,
+        "image_file": "56d80e88dc8849469074e461928e9a41.jpg",
+        "heatmap_file": "gradcam_8141ecfaf3cc4b8498ce86a7ed6a8072.jpg",
+        "probabilities": {
+            "Glioma": 0.0,
+            "Meningioma": 0.02,
+            "No Tumor": 0.0,
+            "Pituitary": 99.98
+        }
+    },
+    {
+        "id": "84bb4878fdc34057ae2edabcd1a02211",
+        "date": "25-06-2026 03:43 PM",
+        "filename": "Te-pi_235.jpg",
+        "prediction": "Pituitary",
+        "confidence": 100.0,
+        "image_file": "ca4aab5c33804d8586f873e5676668d5.jpg",
+        "heatmap_file": "gradcam_7173554238034cd9b71b9a4067e80071.jpg",
+        "probabilities": {
+            "Glioma": 0.0,
+            "Meningioma": 0.0,
+            "No Tumor": 0.0,
+            "Pituitary": 100.0
+        }
+    },
+    {
+        "id": "3dc7c72512cf4130b8279bf4e8f94617",
+        "date": "25-06-2026 03:32 PM",
+        "filename": "Te-aug-me_5.jpg",
+        "prediction": "Meningioma",
+        "confidence": 99.93,
+        "image_file": "cc4582bbfe2843759b6ebb26a4528a7e.jpg",
+        "heatmap_file": "gradcam_bacd7811d7f04311bab53a8d1be8044d.jpg",
+        "probabilities": {
+            "Glioma": 0.04,
+            "Meningioma": 99.93,
+            "No Tumor": 0.0,
+            "Pituitary": 0.02
+        }
+    },
+    {
+        "id": "c36a97dc09b9454987f8d2c143fdca46",
+        "date": "25-06-2026 03:11 PM",
+        "filename": "Te-aug-me_51.jpg",
+        "prediction": "Meningioma",
+        "confidence": 99.96,
+        "image_file": "0c88dbeb88e94d589a86e10b52e12c10.jpg",
+        "heatmap_file": "gradcam_7d3b8b4a1ee04ba09714eb4147167e2b.jpg",
+        "probabilities": {
+            "Glioma": 0.03,
+            "Meningioma": 99.96,
+            "No Tumor": 0.0,
+            "Pituitary": 0.01
+        }
+    },
+    {
+        "id": "861feccdd68f41efbc23bde9c2917326",
+        "date": "25-06-2026 02:57 PM",
+        "filename": "Te-aug-me_4.jpg",
+        "prediction": "Meningioma",
+        "confidence": 99.99,
+        "image_file": "764f54a1b4f840d5a262370c466ad078.jpg",
+        "heatmap_file": "gradcam_9790d0ea3f18468c94b3a051374d7bf7.jpg",
+        "probabilities": {
+            "Glioma": 0.0,
+            "Meningioma": 99.99,
+            "No Tumor": 0.0,
+            "Pituitary": 0.0
+        }
+    },
+    {
+        "id": "5a84927cfee44c45ae935fdc0e4faf95",
+        "date": "25-06-2026 02:01 PM",
+        "filename": "Te-pi_25.jpg",
+        "prediction": "Pituitary",
+        "confidence": 100.0,
+        "image_file": "89ec509b927342f9b1c9f2a6c2aebed0.jpg",
+        "heatmap_file": "gradcam_9561e994498f4693a7da4a2270c3fa69.jpg",
+        "probabilities": {
+            "Glioma": 0.0,
+            "Meningioma": 0.0,
+            "No Tumor": 0.0,
+            "Pituitary": 100.0
+        }
+    },
+    {
+        "id": "3aba1299188f44d6ae95d89518d0389a",
+        "date": "25-06-2026 01:40 PM",
+        "filename": "Te-pi_20.jpg",
+        "prediction": "Pituitary",
+        "confidence": 99.99,
+        "image_file": "a56c7248a4b14428b8b41f2c663fe4c3.jpg",
+        "heatmap_file": "gradcam_84fed0d808ef434f8097dc39fa8accf0.jpg",
+        "probabilities": {
+            "Glioma": 0.0,
+            "Meningioma": 0.01,
+            "No Tumor": 0.0,
+            "Pituitary": 99.99
+        }
+    },
+    {
+        "id": "14a851cee1754358a85e035cc5be98b7",
+        "date": "25-06-2026 01:22 PM",
+        "filename": "Te-gl_4.jpg",
+        "prediction": "Glioma",
+        "confidence": 99.98,
+        "image_file": "0c2dc3b3d13f446aa3275f3b2dd44576.jpg",
+        "heatmap_file": "gradcam_86b0f9e114ac411bbac53ae636e2a1c9.jpg",
+        "probabilities": {
+            "Glioma": 99.98,
+            "Meningioma": 0.01,
+            "No Tumor": 0.0,
+            "Pituitary": 0.0
+        }
+    },
+    {
+        "id": "712c8e9e56e34712bd31ee1e7e5af79a",
+        "date": "25-06-2026 01:22 PM",
+        "filename": "Te-gl_4.jpg",
+        "prediction": "Glioma",
+        "confidence": 99.98,
+        "image_file": "d91c9c856e194457add1e3886c2bee4b.jpg",
+        "heatmap_file": "gradcam_2a772467ba7243458138b799628e6646.jpg",
+        "probabilities": {
+            "Glioma": 99.98,
+            "Meningioma": 0.01,
+            "No Tumor": 0.0,
+            "Pituitary": 0.0
+        }
+    },
+    {
+        "id": "7933a70f6f6f404da230e1988c44bcaa",
+        "date": "25-06-2026 01:14 PM",
+        "filename": "Te-no_4.jpg",
+        "prediction": "No Tumor",
+        "confidence": 100.0,
+        "image_file": "e942f851fcbe46429188799637e5ffc9.jpg",
+        "heatmap_file": "gradcam_0896b0c65d084e0dab5d2be258c9a7a6.jpg",
+        "probabilities": {
+            "Glioma": 0.0,
+            "Meningioma": 0.0,
+            "No Tumor": 100.0,
+            "Pituitary": 0.0
+        }
+    },
+    {
+        "id": "10da23c254524e17acad7e30fae003fc",
+        "date": "25-06-2026 01:13 PM",
+        "filename": "Te-no_3.jpg",
+        "prediction": "No Tumor",
+        "confidence": 100.0,
+        "image_file": "c8a93dc4a5264303a04898bad9ba0ab2.jpg",
+        "heatmap_file": "gradcam_41791059f3cf47019e95208a3f22d778.jpg",
+        "probabilities": {
+            "Glioma": 0.0,
+            "Meningioma": 0.0,
+            "No Tumor": 100.0,
+            "Pituitary": 0.0
+        }
+    }
+]

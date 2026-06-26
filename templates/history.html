@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan History | MRIScan AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Needed for fa-solid icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brain-icon">🧠</div>
+            <div>
+                <h2>MRIScan AI</h2>
+                <p>Brain MRI Analysis</p>
+            </div>
+        </div>
+
+        <a href="{{ url_for('scan') }}" class="new-scan-btn">
+            ＋ New Scan
+        </a>
+
+        <nav class="menu">
+            <a href="{{ url_for('index') }}">⌂ Dashboard</a>
+            <a href="{{ url_for('scan') }}">◉ MRI Scan</a>
+
+            <a href="{{ url_for('history') }}" class="active">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span data-en="Scan History" data-ta="ஸ்கேன் வரலாறு">
+                    Scan History
+                </span>
+            </a>
+
+            <a href="{{ url_for('performance') }}">⌁ Performance</a>
+            <a href="{{ url_for('about') }}">ⓘ About Project</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+
+        <div class="topbar">
+            <div class="page-title">
+                <h1>Scan History</h1>
+                <p>Previous MRI classification results</p>
+            </div>
+
+            <a href="{{ url_for('scan') }}" class="new-scan-btn">
+                ＋ Analyze New Scan
+            </a>
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="history-message">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if history_items %}
+        <div class="history-table-wrap">
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>MRI Image</th>
+                        <th>Prediction</th>
+                        <th>Confidence</th>
+                        <th>Grad-CAM</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in history_items %}
+                    <tr>
+
+                        <!-- Safe for old history records -->
+                        <td>{{ item.get('date', 'Date unavailable') }}</td>
+
+                        <td>
+                            {% if item.get('image_file') %}
+                                <img class="history-preview"
+                                     src="{{ url_for('static', filename='uploads/' + item.get('image_file')) }}"
+                                     alt="MRI Scan"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+
+                                <span class="history-file-missing" style="display:none;">
+                                    Image unavailable
+                                </span>
+                            {% else %}
+                                <span class="history-file-missing">
+                                    Image unavailable
+                                </span>
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            <span class="history-prediction">
+                                {{ item.get('prediction', 'Unknown') }}
+                            </span>
+                        </td>
+
+                        <td>
+                            {% if item.get('confidence') is not none %}
+                                {{ item.get('confidence') }}%
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+
+                        <!-- FIX: old records may not have heatmap_file -->
+                        <td>
+                            {% if item.get('heatmap_file') %}
+                                <img class="history-preview"
+                                     src="{{ url_for('static', filename='heatmaps/' + item.get('heatmap_file')) }}"
+                                     alt="Grad-CAM Heatmap"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+
+                                <span class="history-file-missing" style="display:none;">
+                                    Heatmap unavailable
+                                </span>
+                            {% else %}
+                                <span class="history-file-missing">
+                                    Not available
+                                </span>
+                            {% endif %}
+                        </td>
+
+                        <td class="history-actions">
+
+                            {% if item.get('id') %}
+                                <a class="view-result-btn"
+                                   href="{{ url_for('history_result', scan_id=item.get('id')) }}">
+                                    View Result
+                                </a>
+
+                                <form method="POST"
+                                      action="{{ url_for('delete_history', scan_id=item.get('id')) }}"
+                                      onsubmit="return confirm('Delete this scan history?');">
+
+                                    <button class="delete-history-btn" type="submit">
+                                        Delete
+                                    </button>
+                                </form>
+                            {% else %}
+                                <span class="history-file-missing">
+                                    Old record
+                                </span>
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% else %}
+        <div class="empty-history">
+            <h2>No Scan History Yet</h2>
+            <p>Upload and analyze an MRI image. It will appear here.</p>
+
+            <a href="{{ url_for('scan') }}" class="new-scan-btn">
+                Analyze First MRI Scan
+            </a>
+        </div>
+        {% endif %}
+
+    </main>
+</div>
+</body>
+</html>
